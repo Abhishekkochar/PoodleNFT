@@ -8,7 +8,7 @@ async function fetchNFTItems() {
   return response.json();
 }
 
-export function nftList() {
+export function NftList() {
   const { data, error, isLoading } = useQuery("nfts", fetchNFTItems);
   if (isLoading) {
     return <div>Loading...</div>;

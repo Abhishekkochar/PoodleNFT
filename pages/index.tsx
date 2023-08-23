@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { abi } from "../utils/abi";
 import { ethers, JsonRpcSigner } from "ethers";
-import { nftList } from "./components/fetchNfts";
+import { NftList } from "./components/fetchNfts";
 import { createNft } from "./components/createNft";
 
 const contractAddress = "0x84c5A705CC3616fffecAB6dba423D0A9A263605F";
@@ -16,7 +16,7 @@ const HomePage = () => {
     if (typeof window.ethereum !== "undefined") {
       setHasMetamask(true);
     }
-  });
+  }, []);
 
   async function connect() {
     if (typeof window.ethereum !== "undefined") {
@@ -93,7 +93,7 @@ const HomePage = () => {
             ""
           )}
         </div>
-        <div className="px-4 sm:px-0"> {nftList()}</div>
+        <div className="px-4 sm:px-0"> {NftList()}</div>
       </div>
     </>
   );
