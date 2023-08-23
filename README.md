@@ -1,27 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Testnet Address
 
 Contract has been deployed at Sepolia testnet at [0x84c5A705CC3616fffecAB6dba423D0A9A263605F](https://sepolia.etherscan.io/address/0x84c5A705CC3616fffecAB6dba423D0A9A263605F#readContract)
+
+Poodle NFT.
+
+It's a simple NFT that user can mint and transfer to other user. Poodle contract is ownable. Owner cannot mint any NFT, however can burn if desired.
+
+Next.js framework being used for this App. There are four api calls performing CRUD operations.
+
+`/api/createNFT` will be called once the user mint the NFT.
+
+`/api/getNFT` will be used to fetch all minted NFT. This will return the `tokenId`, `userAddress` and `tx hash`.
+
+`/api/updateNFT` can be called when user transfer their NFT to other users only via through the site. This still need to be implemented.
+
+`/api/deleteNFT` can be called when owner burns the NFT by sending to address(0). This still need to be implemented.

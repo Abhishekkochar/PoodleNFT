@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^13.4.19",
     "@next/font": "13.1.2",
     "@prisma/client": "^5.2.0",
     "@types/node": "18.11.18",
