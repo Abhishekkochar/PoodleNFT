@@ -1,27 +1,81 @@
-## Getting Started
+# Turborepo starter
 
-First, run the development server:
+This is an official starter Turborepo.
 
-```bash
-npm run dev
+## Using this example
+
+Run the following command:
+
+```sh
+npx create-turbo@latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What's inside?
 
-## Testnet Address
+This Turborepo includes the following packages/apps:
 
-Contract has been deployed at Sepolia testnet at [0x84c5A705CC3616fffecAB6dba423D0A9A263605F](https://sepolia.etherscan.io/address/0x84c5A705CC3616fffecAB6dba423D0A9A263605F#readContract)
+### Apps and Packages
 
-Poodle NFT.
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-It's a simple NFT that user can mint and transfer to other user. Poodle contract is ownable. Owner cannot mint any NFT, however can burn if desired.
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-Next.js framework being used for this App. There are four api calls performing CRUD operations.
+### Utilities
 
-`/api/createNFT` will be called once the user mint the NFT.
+This Turborepo has some additional tools already setup for you:
 
-`/api/getNFT` will be used to fetch all minted NFT. This will return the `tokenId`, `userAddress` and `tx hash`.
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-`/api/updateNFT` can be called when user transfer their NFT to other users only via through the site. This still need to be implemented.
+### Build
 
-`/api/deleteNFT` can be called when owner burns the NFT by sending to address(0). This still need to be implemented.
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm dev
+```
+
+### Remote Caching
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
