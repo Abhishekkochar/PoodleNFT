@@ -9,13 +9,12 @@ contract Poodle is ERC721, Ownable {
 
     /**
      * External function to mint NFT
-     * @param to, address to send the nft to 
      * @param tokenId, id to mint
      * Owner is not allowed to mint Poodle NFT
      */
-    function mint(address to, uint256 tokenId) external {
+    function mint( uint256 tokenId) external {
         if(msg.sender == owner()) revert OWNER_NOT_ALLOWED_TO_MINT();
-        _mint(to, tokenId);
+        _mint(msg.sender, tokenId);
     }
 
     /**
