@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary */
+/* eslint-disable no-nested-ternary -- disabling ts- warning from L38*/
 "use client"
 import { useState, useEffect } from "react";
 import type { JsonRpcSigner } from "ethers";
@@ -16,7 +16,7 @@ export default function Page(): JSX.Element {
     }
   }, []);
 
-  async function connect() {
+  async function connect():Promise<void> {
     if (typeof window.ethereum !== "undefined") {
       try {
         setIsConnected(true);
@@ -44,8 +44,8 @@ export default function Page(): JSX.Element {
             ) : (
               <div className="flex justify-end">
                 <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded" type="button"
-                  onClick={() => connect()}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded" onClick={() =>  connect()}
+                  type="button"
                 >
                   Connect to MetaMask
                 </button>
