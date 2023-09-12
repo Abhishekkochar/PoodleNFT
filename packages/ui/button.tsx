@@ -9,7 +9,7 @@ export function Button({
 }): JSX.Element {
 	return (
 		<button
-			className="bg-blue-200 text-black font-medium py-2 px-4 rounded"
+			className="bg-blue-200 text-black hover:bg-gradient-to-r from-blue-400 via-purple-400 font-medium py-2 px-4 rounded"
 			onClick={onClick}
 			type="button"
 		>
