@@ -1,9 +1,10 @@
 /* eslint-disable no-nested-ternary -- disabling ts- warning from L38*/
 'use client';
 import { useState, useEffect } from 'react';
-import type { JsonRpcSigner } from 'ethers';
+import type { AbiCoder, InterfaceAbi, JsonRpcSigner } from 'ethers';
 import { ethers } from 'ethers';
 import { Container, Button } from 'ui';
+import { Poodle } from 'smart-contract';
 
 export default function Page(): JSX.Element {
 	const [isConnected, setIsConnected] = useState(false);
@@ -29,6 +30,21 @@ export default function Page(): JSX.Element {
 			}
 		} else {
 			setIsConnected(false);
+		}
+	}
+
+	async function mintNft(): Promise<void> {
+		if (typeof window.ethereum !== 'undefined') {
+			const poodle = new ethers.Contract(
+				'contractAddress',
+				Poodle.interface as InterfaceAbi,
+				signer
+			);
+			try {
+				const tx = await poodle.mintNft();
+			} catch (e) {
+				console.log(e);
+			}
 		}
 	}
 
