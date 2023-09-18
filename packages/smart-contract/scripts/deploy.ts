@@ -8,8 +8,12 @@ async function main() {
 	const poodle = await ethers.deployContract('Poodle', [name, symbol]);
 
 	await poodle.waitForDeployment();
-
-	console.log('Contract is deployed at: ', await poodle.getAddress());
+	const poodleAddress = await poodle.getAddress();
+	console.log('Contract is deployed at: ', poodleAddress);
+	const owner = await ethers.getSigners();
+	const stake = await ethers.deployContract('Stake', [owner[0], poodleAddress]);
+	await stake.waitForDeployment();
+	// When deploying to testnet, uncomment the following lines.
 	// This will verify the contract
 	// await verify({
 	//   contractAddress: await poodle.getAddress(),

@@ -4,6 +4,7 @@ import type { JsonRpcSigner } from 'ethers';
 import { ethers } from 'ethers';
 import { Container, Button } from 'ui';
 import mintNft from '../hooks/mint-nft';
+import stakeNft from '../hooks/mint-nft';
 
 export default function Page(): JSX.Element {
 	const [isConnected, setIsConnected] = useState(false);
@@ -53,7 +54,11 @@ export default function Page(): JSX.Element {
 						showGrid={false}
 						text="Mint Poodle"
 					/>
-					<Container showGrid={false} text="Stake Poodle" />
+					<Container
+						onClick={() => stakeNft(signer)}
+						showGrid={false}
+						text="Stake Poodle"
+					/>
 				</>
 			) : null}
 
