@@ -4,9 +4,11 @@ import { Grid } from './grid';
 export function Container({
 	text,
 	showGrid,
+	onClick,
 }: {
 	text?: string;
 	showGrid?: boolean;
+	onClick?: () => void;
 }): JSX.Element {
 	return (
 		<div className="flex justify-center items-center py-40">
@@ -18,7 +20,7 @@ export function Container({
 				) : (
 					<div className="flex justify-center mt-72 mb-2">
 						{' '}
-						{text ? <Button text={text} /> : ''}
+						{text ? <Button onClick={onClick} text={text} /> : ''}
 					</div>
 				)}
 			</div>

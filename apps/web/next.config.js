@@ -1,6 +1,6 @@
 module.exports = {
-  experimental: {
-    appDir: true,
-  },
-  transpilePackages: ["ui"],
+	experimental: {
+		appDir: true,
+	},
+	transpilePackages: ['ui', 'smart-contract'],
 };
