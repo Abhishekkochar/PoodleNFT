@@ -1,20 +1,15 @@
-/* eslint-disable no-nested-ternary -- disabling ts- warning from L38*/
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { JsonRpcSigner } from 'ethers';
 import { ethers } from 'ethers';
 import { Container, Button } from 'ui';
+import mintNft from '../hooks/mint-nft';
+import stakeNft from '../hooks/mint-nft';
 
 export default function Page(): JSX.Element {
 	const [isConnected, setIsConnected] = useState(false);
-	const [hasMetamask, setHasMetamask] = useState(false);
-	const [signer, setSigner] = useState<JsonRpcSigner | null>();
 
-	useEffect(() => {
-		if (typeof window.ethereum !== 'undefined') {
-			setHasMetamask(true);
-		}
-	}, []);
+	const [signer, setSigner] = useState<JsonRpcSigner | undefined>();
 
 	async function connect(): Promise<void> {
 		if (typeof window.ethereum !== 'undefined') {
@@ -43,23 +38,27 @@ export default function Page(): JSX.Element {
 					<div className="text-black font-medium py-2 px-4 rounded">
 						Poodle NFT
 					</div>
-					{hasMetamask ? (
-						isConnected ? (
-							<div className="bg-gray-300 rounded-md py-2 px-2">
-								Connected: {signer?.address}
-							</div>
-						) : (
-							<Button onClick={() => connect()} text="Connect to Metamask" />
-						)
+					{isConnected ? (
+						<div className="bg-gray-300 rounded-md py-2 px-2">
+							Connected: {signer?.address}
+						</div>
 					) : (
-						'Please install metamask'
+						<Button onClick={() => connect()} text="Connect to Metamask" />
 					)}
 				</div>
 			</div>
 			{isConnected ? (
 				<>
-					<Container showGrid={false} text="Mint Poodle" />
-					<Container showGrid={false} text="Stake Poodle" />
+					<Container
+						onClick={() => mintNft(signer)}
+						showGrid={false}
+						text="Mint Poodle"
+					/>
+					<Container
+						onClick={() => stakeNft(signer)}
+						showGrid={false}
+						text="Stake Poodle"
+					/>
 				</>
 			) : null}
 
